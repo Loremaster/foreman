@@ -10,6 +10,12 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+    labels:
+      team:
+        new:
+          name: 'Название бригады'
+          people_count: 'Число людей (в бригаде)'
+          price: 'Стоимость обслуживания'
     # Labels and hints examples
     # labels:
     #   defaults:

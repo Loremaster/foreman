@@ -12,11 +12,13 @@ class Team < ActiveRecord::Base
             :presence => { :message => "Поле не должно быть пустым" },
             :numericality => { :only_integer => true,
                                :greater_than => 0,
-                               :less_than_or_equal_to => 100 }
+                               :less_than_or_equal_to => 100,
+                               :message => "Значение должно быть целым числом от 1 до 100."  }
 
   validates :price,
             :presence => { :message => "Поле не должно быть пустым" },
             :numericality => { :only_integer => true,
                                :greater_than => 0,
-                               :less_than_or_equal_to => 100_000_000 }
+                               :less_than_or_equal_to => 100_000_000,
+                               :message => "Значение должно быть целым числом от 1 до 100 миллионов" }
 end

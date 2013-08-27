@@ -1,1 +1,11 @@
-p Hello, new!
+legend Заполнение анкеты новой бригады
+
+= simple_form_for @team do |f|
+    = f.input :name, :input_html => { :class => "span12", :autofocus => true }
+    = f.input :people_count, :input_html => { :class => "span12" }
+    = f.input :price, :input_html => { :class => "span12" }
+
+    div class="pagination-centered"
+      = f.button :submit, "Создать", :class => "btn btn-large btn-success"
+      | &#32;
+      = link_to "Отменить", teams_path, :class => "btn btn-large"

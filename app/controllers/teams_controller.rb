@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class TeamsController < ApplicationController
   def index
     @teams = Team.all
@@ -8,10 +9,11 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new( params[:new] )
+    @team = Team.new( params[:team] )
 
     if @team.save
       redirect_to teams_path
+      flash[:success] = "Анкета новой бригады успешно сохранена!"
     else
       render 'new'
     end
