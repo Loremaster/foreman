@@ -47,7 +47,7 @@ GEM
     debug_inspector (0.0.2)
     diff-lcs (1.2.4)
     erubis (2.7.0)
-    execjs (2.0.0)
+    execjs (2.0.1)
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)

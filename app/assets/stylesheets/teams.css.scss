@@ -1,3 +1,15 @@
 // Place all the styles related to the Teams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$padding: 15px;
+
+.main-container{
+  background-color: #dceaf4;
+  padding: $padding;
+}
+
+.sidebar{
+  background-color: #bbd8e9;
+  padding: $padding;
+}
