@@ -21,4 +21,7 @@ class Team < ActiveRecord::Base
                                :greater_than => 0,
                                :less_than_or_equal_to => 100_000_000,
                                :message => "Значение должно быть целым числом от 1 до 100 миллионов" }
+
+  validates :country_id,
+            :presence => { :message => "Страна должна быть выбрана" }
 end

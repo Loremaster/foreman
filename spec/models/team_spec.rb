@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Team do
   before(:each) do
-    @attr = { :name => "some text here", :people_count => 5, :price => 100 }
+    country = Country.create( :name => "name" )
+    @attr = { :name => "some text here", :people_count => 5, :price => 100, :country_id => country.id }
   end
 
   describe "DB" do
@@ -71,6 +72,11 @@ describe Team do
 
     it "price should not accept 100_000_001" do
       team = Team.create( @attr.merge :price => 100_000_001 )
+      team.should_not be_valid
+    end
+
+    it "country_id should not be nil" do
+      team = Team.create( @attr.merge :country_id => nil )
       team.should_not be_valid
     end
   end
