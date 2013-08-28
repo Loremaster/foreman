@@ -1,1 +1,20 @@
-p Hello, index!
+legend Список бригад
+
+- if !@teams.empty?
+  table class="table"
+    thead
+      tr
+        th Название
+        th Страна
+        th Число людей
+        th Стоимость работ
+    tbody
+      - @teams.each do |team|
+        tr
+          td = team.name
+          td = team.country.name
+          td = team.people_count
+          td = team.price
+- else
+  div class="well"
+    | В нвстоящее время анкет для бригад не создано.
