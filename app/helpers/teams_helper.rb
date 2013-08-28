@@ -1,4 +1,5 @@
 module TeamsHelper
+  # Adding new tags in array in params after clicking on chosen tag.
   def table_tags(tag)
     if !params[:table_tags]                                                                         # if there is no array of tags.
       link_to "#{tag} ", :table_tags => [tag]

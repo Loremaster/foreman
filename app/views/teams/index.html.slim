@@ -4,6 +4,7 @@
     legend class="legend-base" Теги
 
     - if !@teams.empty?
+      / Tagcloud.
       - Team.tags_with_nums.each do |tag_with_num|
         span class="label sidebar-tag"
           = link_to tag_with_num[0], teams_path(:tag => tag_with_num[0]), :class => "sidebar-tag-text"
@@ -16,7 +17,7 @@
 /  Team's table.
 legend class="legend-base"
   | Список бригад
-  = link_to new_team_path, :class => "btn btn-legend-right" do
+  = link_to new_team_path, :class => "btn btn-primary btn-legend-right" do
     i class="icon-plus"
     = " Добавить бригаду"
 
