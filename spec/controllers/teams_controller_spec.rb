@@ -14,4 +14,14 @@ describe TeamsController do
       response.should be_success
     end
   end
+
+  describe "POST 'create'" do
+    it "should create" do
+      country = Country.create( :name => "USA" )
+
+      expect do
+        post :create, :team => { :name => "Metal", :country_id => country.id, :people_count => 45, :price => 450 }
+      end.to change( Team, :count ).by(1)
+    end
+  end
 end
