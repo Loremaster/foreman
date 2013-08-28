@@ -31,4 +31,31 @@ describe TeamsController do
       end.to change( Team, :count ).by(1)
     end
   end
+
+  describe "GET 'edit'" do
+    it "should access page" do
+      team = FactoryGirl.create( :team )
+
+      get :edit, :id => team
+      response.should be_success
+    end
+  end
+
+  describe "PUT 'update'" do
+    before(:each) do
+      @team = FactoryGirl.create(:team)
+      @attrs = { :name => "name2", :country_id => @team.country_id, :people_count => @team.people_count, :price => @team.price }
+    end
+
+    it "should update" do
+      put :update, :id => @team, :team => @attrs
+      @team.reload
+      @team.name.should == @attrs[:name]
+    end
+
+    it "redirects to index page after update" do
+      put :update, :id => @team, :team => @attrs
+      response.should redirect_to(teams_path)
+    end
+  end
 end
