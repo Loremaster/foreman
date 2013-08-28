@@ -30,4 +30,7 @@ group :development do
   gem 'webrick', '1.3.1'
 end
 
+group :test do
+  gem 'factory_girl_rails', '4.2.1'
+end
 

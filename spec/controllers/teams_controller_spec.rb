@@ -2,7 +2,14 @@ require 'spec_helper'
 
 describe TeamsController do
   describe "GET 'index'" do
-    it "should access" do
+    it "should access page without teams" do
+      get :index
+      response.should be_success
+    end
+
+    it "should access page with 1 team" do
+      FactoryGirl.create( :team )
+
       get :index
       response.should be_success
     end
