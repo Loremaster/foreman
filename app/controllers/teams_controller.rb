@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
 
   def index
     case
-      # Table tags and their vatiants.
+      # Table tags and their variants.
       when params[:table_tags] && params[:country_id]
         @teams = Team.tagged_with( params[:table_tags] ).where( "country_id = ?", params[:country_id] ).order(sort_column + " " + sort_direction)
       when params[:table_tags] && params[:sort]
@@ -23,7 +23,6 @@ class TeamsController < ApplicationController
       else
         @teams = Team.order(sort_column + " " + sort_direction)
     end
-
   end
 
   def new

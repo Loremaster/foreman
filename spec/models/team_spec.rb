@@ -95,4 +95,13 @@ describe Team do
       team.should be_valid
     end
   end
+
+  describe "Methods" do
+    it "tags_with_nums should return correct array" do
+      2.times { FactoryGirl.create(:team) }
+      FactoryGirl.create(:team, :tag_list => "draw")
+
+      Team.tags_with_nums.should == [["painting",2], ["draw",1]]
+    end
+  end
 end
