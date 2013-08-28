@@ -1,5 +1,5 @@
 = f.input :name, :input_html => { :class => "span12" }
-= f.input :country_id, collection: Country.all
+= f.input :country_id, collection: Country.order( "name asc" )
 = f.input :people_count, :input_html => { :class => "span12" }
 = f.input :price, :input_html => { :class => "span12" }
 = f.input :tag_list, :input_html => { :class => "span12" }
