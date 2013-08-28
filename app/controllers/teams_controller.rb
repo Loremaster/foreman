@@ -1,7 +1,11 @@
 # encoding: UTF-8
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    if params[:country_id]
+      @teams = Country.where("id = ?", params[:country_id]).first.teams
+    else
+      @teams = Team.all
+    end
   end
 
   def new

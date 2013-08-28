@@ -21,7 +21,7 @@ legend class="legend-base"
               i class="icon-pencil"
             | &#32;
             = team.name
-          td = team.country.name
+          td = link_to team.country.name, teams_path(:country_id => team.country)
           td = team.people_count
           td = team.price
           td = team.tag_list
