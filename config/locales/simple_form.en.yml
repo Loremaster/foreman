@@ -14,6 +14,12 @@ en:
       team:
         new:
           name: 'Название бригады'
+          country_id: 'Страна'
+          people_count: 'Число людей (в бригаде)'
+          price: 'Стоимость обслуживания'
+        edit:
+          name: 'Название бригады'
+          country_id: 'Страна'
           people_count: 'Число людей (в бригаде)'
           price: 'Стоимость обслуживания'
     # Labels and hints examples

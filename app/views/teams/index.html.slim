@@ -3,7 +3,7 @@ legend
   = link_to "Добавить бригаду", new_team_path, :class => "btn btn-legend-right"
 
 - if !@teams.empty?
-  table class="table"
+  table class="table table-striped"
     thead
       tr
         th Название
@@ -13,10 +13,14 @@ legend
     tbody
       - @teams.each do |team|
         tr
-          td = team.name
+          td
+            = link_to edit_team_path(team), :class => "btn btn-inverse btn-mini" do
+              i class="icon-pencil"
+            | &#32;
+            = team.name
           td = team.country.name
           td = team.people_count
           td = team.price
 - else
   div class="well"
-    | В нвстоящее время анкет для бригад не создано.
+    | В настоящее время анкет для бригад не создано.

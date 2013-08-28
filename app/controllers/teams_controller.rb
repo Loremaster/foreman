@@ -18,4 +18,22 @@ class TeamsController < ApplicationController
       render 'new'
     end
   end
+
+  def edit
+    @team = Team.find( params[:id] )
+  end
+
+  def update
+    @team = Team.find( params[:id] )
+
+    if @team.update_attributes( params[:team] )
+      redirect_to teams_path
+      flash[:info] = "Анкета новой бригады изменена."
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+  end
 end

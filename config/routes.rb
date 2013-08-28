@@ -2,7 +2,7 @@ Foreman::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  resources :teams, :only => [ :index, :new, :create ]
+  resources :teams
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
