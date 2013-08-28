@@ -3,7 +3,8 @@
 
   - if !@teams.empty?
     - Team.tags_with_nums.each do |tag_with_num|
-      = link_to tag_with_num[0], :tag => tag_with_num[0]
+      span class="label"
+        = link_to tag_with_num[0], teams_path(:tag => tag_with_num[0]), :class => "sidebar-tag"
       = " x #{tag_with_num[1]}"
       br
 
