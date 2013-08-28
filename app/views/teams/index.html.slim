@@ -1,16 +1,16 @@
 - content_for :sidebar do
-  legend class="legend-base" Теги
+  div class="sidebar"
+    legend class="legend-base" Теги
 
-  - if !@teams.empty?
-    - Team.tags_with_nums.each do |tag_with_num|
-      span class="label sidebar-tag"
-        = link_to tag_with_num[0], teams_path(:tag => tag_with_num[0]), :class => "sidebar-tag-text"
-      b
-        = " x #{tag_with_num[1]}"
-      br/
-
-  - else
-    div class="well" В настоящее время тегов нет.
+    - if !@teams.empty?
+      - Team.tags_with_nums.each do |tag_with_num|
+        span class="label sidebar-tag"
+          = link_to tag_with_num[0], teams_path(:tag => tag_with_num[0]), :class => "sidebar-tag-text"
+        b
+          = " x #{tag_with_num[1]}"
+        br/
+    - else
+      div class="well" В настоящее время тегов нет.
 
 legend class="legend-base"
   | Список бригад
@@ -42,7 +42,9 @@ legend class="legend-base"
               = link_to team.country.name, teams_path(:country_id => team.country, :tag => params[:tag])
           td = team.people_count
           td = team.price
-          td = team.tag_list
+          td
+            - team.tag_list.each do |tag|
+              = table_tags(tag)
 - else
   div class="well"
     | В настоящее время анкет для бригад не создано.
