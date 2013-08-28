@@ -1,6 +1,8 @@
 legend
   | Список бригад
-  = link_to "Добавить бригаду", new_team_path, :class => "btn btn-legend-right"
+  = link_to new_team_path, :class => "btn btn-legend-right" do
+    i class="icon-plus"
+    = " Добавить бригаду"
 
 - if !@teams.empty?
   table class="table table-striped"
