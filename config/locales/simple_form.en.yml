@@ -17,11 +17,13 @@ en:
           country_id: 'Страна'
           people_count: 'Число людей (в бригаде)'
           price: 'Стоимость обслуживания'
+          tag_list: 'Категории работ (указываются через запятую)'
         edit:
           name: 'Название бригады'
           country_id: 'Страна'
           people_count: 'Число людей (в бригаде)'
           price: 'Стоимость обслуживания'
+          tag_list: 'Категории работ (указываются через запятую)'
     # Labels and hints examples
     # labels:
     #   defaults:

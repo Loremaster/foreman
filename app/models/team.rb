@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class Team < ActiveRecord::Base
-  attr_accessible :country_id, :name, :people_count, :price
+  acts_as_taggable
+
+  attr_accessible :country_id, :name, :people_count, :price, :tag_list
 
   belongs_to :country
 

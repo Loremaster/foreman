@@ -9,6 +9,7 @@ gem 'therubyracer', :platform => :ruby
 gem 'less-rails', '2.3.3'
 gem 'simple_form', '2.1.0'
 gem 'slim', '2.0.1'
+gem 'acts-as-taggable-on', '2.4.1'
 
 # Gems used only for assets and not required
 # in production environments by default.

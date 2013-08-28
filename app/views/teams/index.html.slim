@@ -12,6 +12,7 @@ legend class="legend-base"
         th Страна
         th Число людей
         th Стоимость работ
+        th Категории работ
     tbody
       - @teams.each do |team|
         tr
@@ -23,6 +24,7 @@ legend class="legend-base"
           td = team.country.name
           td = team.people_count
           td = team.price
+          td = team.tag_list
 - else
   div class="well"
     | В настоящее время анкет для бригад не создано.
