@@ -2,6 +2,8 @@
 class TeamsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
+  before_filter :set_gon_tags, :except => [:index, :destroy]
+
   def index
     case
       # Table tags and their variants.
@@ -79,5 +81,9 @@ class TeamsController < ApplicationController
   def sorted_table_tags(team, table_tags)
     sorted = team.collect{ |t| [t, t.tag_list.size - table_tags.size]  }.sort_by { |obj, tags_count| tags_count } # Create array [[Obj, tags_diff], ..]. Idea is that array with tags_diff == 0 should be on the top (because they are most closest to seeking tags).
     sorted.collect{ |e| e[0] }                                                                      # Extract objects in array.
+  end
+
+  def set_gon_tags
+    gon.tags = ActsAsTaggableOn::Tag.all.map( &:name )
   end
 end

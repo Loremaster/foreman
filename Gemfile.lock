@@ -55,6 +55,9 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    gon (4.1.1)
+      actionpack (>= 2.3.0)
+      json
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
@@ -162,8 +165,9 @@ DEPENDENCIES
   binding_of_caller (= 0.7.2)
   coffee-rails (~> 3.2.1)
   factory_girl_rails (= 4.2.1)
+  gon (= 4.1.1)
   jquery-rails
-  jquery-ui-rails
+  jquery-ui-rails (= 4.0.4)
   less-rails (= 2.3.3)
   quiet_assets (= 1.0.2)
   rails (= 3.2.14)
