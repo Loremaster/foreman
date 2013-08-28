@@ -58,4 +58,14 @@ describe TeamsController do
       response.should redirect_to(teams_path)
     end
   end
+
+  describe "DELETE 'destroy'" do
+    it "should delete" do
+      team = FactoryGirl.create(:team)
+
+      expect do
+        delete :destroy, :id => team
+      end.to change(Team, :count).by(-1)
+    end
+  end
 end

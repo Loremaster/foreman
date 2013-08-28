@@ -28,12 +28,19 @@ class TeamsController < ApplicationController
 
     if @team.update_attributes( params[:team] )
       redirect_to teams_path
-      flash[:info] = "Анкета новой бригады изменена."
+      flash[:info] = "Анкета бригады изменена."
     else
       render 'edit'
     end
   end
 
   def destroy
+    team = Team.find( params[:id] )
+
+    if team.destroy
+      flash[:info] = "Анкета бригады была удалена."
+    end
+
+    redirect_to teams_path
   end
 end
