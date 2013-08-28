@@ -8,10 +8,10 @@ legend class="legend-base"
   table class="table table-striped"
     thead
       tr
-        th Название
+        th = sortable "name", "Название"
         th Страна
-        th Число людей
-        th Стоимость работ
+        th = sortable "people_count", "Число людей"
+        th = sortable "price", "Стоимость работ"
         th Категории работ
     tbody
       - @teams.each do |team|

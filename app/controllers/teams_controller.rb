@@ -1,10 +1,12 @@
 # encoding: UTF-8
 class TeamsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def index
     if params[:country_id]
-      @teams = Country.where("id = ?", params[:country_id]).first.teams
+      @teams = Team.where( "country_id = ?", params[:country_id] ).order(sort_column + " " + sort_direction)
     else
-      @teams = Team.all
+      @teams = Team.order(sort_column + " " + sort_direction)
     end
   end
 
@@ -46,5 +48,15 @@ class TeamsController < ApplicationController
     end
 
     redirect_to teams_path
+  end
+
+  private
+
+  def sort_column
+    Team.column_names.include?(params[:sort]) ? params[:sort] : "price"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
