@@ -1,3 +1,4 @@
+/ Tags cloud.
 - content_for :sidebar do
   div class="sidebar"
     legend class="legend-base" Теги
@@ -12,6 +13,7 @@
     - else
       div class="well" В настоящее время тегов нет.
 
+/  Team's table.
 legend class="legend-base"
   | Список бригад
   = link_to new_team_path, :class => "btn btn-legend-right" do
@@ -39,7 +41,7 @@ legend class="legend-base"
             - if params[:country_id]
               = team.country.name
             - else
-              = link_to team.country.name, teams_path(:country_id => team.country, :tag => params[:tag])
+              = link_to team.country.name, teams_path(:country_id => team.country, :tag => params[:tag], :table_tags => params[:table_tags])
           td = team.people_count
           td = team.price
           td

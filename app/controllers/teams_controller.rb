@@ -4,17 +4,24 @@ class TeamsController < ApplicationController
 
   def index
     case
+      when params[:table_tags] && params[:country_id]
+        @teams = Team.tagged_with( params[:table_tags] ).where( "country_id = ?", params[:country_id] ).order(sort_column + " " + sort_direction)
+      when params[:table_tags] && params[:sort]
+        @teams = Team.tagged_with( params[:table_tags] ).order(sort_column + " " + sort_direction)
+      when params[:table_tags]
+        @teams = Team.tagged_with( params[:table_tags] )
+        @teams = sorted_table_tags( @teams, params[:table_tags] )
+
       when params[:country_id] && params[:tag]
-        @teams = Team.tagged_with( params[:tag] ).where( "country_id = ?", params[:country_id] )
+        @teams = Team.tagged_with( params[:tag] ).where( "country_id = ?", params[:country_id] ).order(sort_column + " " + sort_direction)    # Team, who has the tag AND the country.
       when params[:country_id] && !params[:tag]
-        @teams = Team.where( "country_id = ?", params[:country_id] )
+        @teams = Team.where( "country_id = ?", params[:country_id] ).order(sort_column + " " + sort_direction)
       when params[:tag] && !params[:country_id]
-        @teams = Team.tagged_with( params[:tag] )
+        @teams = Team.tagged_with( params[:tag] ).order(sort_column + " " + sort_direction)
       else
-        @teams = Team
+        @teams = Team.order(sort_column + " " + sort_direction)
     end
 
-    @teams = @teams.order(sort_column + " " + sort_direction)
   end
 
   def new
@@ -65,5 +72,11 @@ class TeamsController < ApplicationController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  # Sorting teams via tags (who has less tags will be on top of table).
+  def sorted_table_tags(team, table_tags)
+    sorted = team.collect{ |t| [t, t.tag_list.size - table_tags.size]  }.sort_by { |obj, tags_count| tags_count } # Create array [[Obj, tags_diff], ..]. Idea is that array with tags_diff == 0 should be on the top (because they are most closest to seeking tags).
+    sorted.collect{ |e| e[0] }                                                                      # Extract objects in array.
   end
 end
