@@ -34,7 +34,11 @@ legend class="legend-base"
               i class="icon-pencil"
             | &#32;
             = team.name
-          td = link_to team.country.name, teams_path(:country_id => team.country)
+          td
+            - if params[:country_id]
+              = team.country.name
+            - else
+              = link_to team.country.name, teams_path(:country_id => team.country, :tag => params[:tag])
           td = team.people_count
           td = team.price
           td = team.tag_list

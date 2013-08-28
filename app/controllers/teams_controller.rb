@@ -3,13 +3,18 @@ class TeamsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    if params[:country_id]
-      @teams = Team.where( "country_id = ?", params[:country_id] ).order(sort_column + " " + sort_direction)
-    elsif params[:tag]
-      @teams = Team.tagged_with( params[:tag] ).order(sort_column + " " + sort_direction)
-    else
-      @teams = Team.order(sort_column + " " + sort_direction)
+    case
+      when params[:country_id] && params[:tag]
+        @teams = Team.tagged_with( params[:tag] ).where( "country_id = ?", params[:country_id] )
+      when params[:country_id] && !params[:tag]
+        @teams = Team.where( "country_id = ?", params[:country_id] )
+      when params[:tag] && !params[:country_id]
+        @teams = Team.tagged_with( params[:tag] )
+      else
+        @teams = Team
     end
+
+    @teams = @teams.order(sort_column + " " + sort_direction)
   end
 
   def new
