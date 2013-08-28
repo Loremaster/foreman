@@ -29,4 +29,13 @@ class Team < ActiveRecord::Base
 
   validates :tag_list,
             :length => { :minimum => 1, :message => "Укажите хотя бы 1 тег" }
+
+  # Array with tag name and its count, sorted asc.
+  # => [["painting", 4], ["drawning", 1]]
+  def self.tags_with_nums
+    all_tags = ActsAsTaggableOn::Tag.all.map( &:name )
+
+    tags_with_nums = all_tags.collect{ |tag| [tag, Team.tagged_with(tag).size]  }
+    tags_with_nums.sort_by { |name, count| count }.reverse
+  end
 end

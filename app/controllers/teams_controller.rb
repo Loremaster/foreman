@@ -5,6 +5,8 @@ class TeamsController < ApplicationController
   def index
     if params[:country_id]
       @teams = Team.where( "country_id = ?", params[:country_id] ).order(sort_column + " " + sort_direction)
+    elsif params[:tag]
+      @teams = Team.tagged_with( params[:tag] ).order(sort_column + " " + sort_direction)
     else
       @teams = Team.order(sort_column + " " + sort_direction)
     end

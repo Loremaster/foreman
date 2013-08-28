@@ -1,3 +1,15 @@
+- content_for :sidebar do
+  legend class="legend-base" Теги
+
+  - if !@teams.empty?
+    - Team.tags_with_nums.each do |tag_with_num|
+      = link_to tag_with_num[0], :tag => tag_with_num[0]
+      = " x #{tag_with_num[1]}"
+      br
+
+  - else
+    div class="well" В настоящее время тегов нет.
+
 legend class="legend-base"
   | Список бригад
   = link_to new_team_path, :class => "btn btn-legend-right" do
