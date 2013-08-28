@@ -26,4 +26,7 @@ class Team < ActiveRecord::Base
 
   validates :country_id,
             :presence => { :message => "Страна должна быть выбрана" }
+
+  validates :tag_list,
+            :length => { :minimum => 1, :message => "Укажите хотя бы 1 тег" }
 end

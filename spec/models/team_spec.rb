@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Team do
   before(:each) do
     country = Country.create( :name => "name" )
-    @attr = { :name => "some text here", :people_count => 5, :price => 100, :country_id => country.id }
+    @attr = { :name => "some text here", :people_count => 5, :price => 100, :country_id => country.id, :tag_list => "painting" }
   end
 
   describe "DB" do
@@ -78,6 +78,21 @@ describe Team do
     it "country_id should not be nil" do
       team = Team.create( @attr.merge :country_id => nil )
       team.should_not be_valid
+    end
+
+    it "tag_list should not accept 0 tags" do
+      team = Team.create( @attr.merge :tag_list => "" )
+      team.should_not be_valid
+    end
+
+    it "tag_list should accept 1 tag" do
+      team = Team.create( @attr.merge :tag_list => "some" )
+      team.should be_valid
+    end
+
+    it "tag_list should accept 2 tags" do
+      team = Team.create( @attr.merge :tag_list => "some, thing" )
+      team.should be_valid
     end
   end
 end

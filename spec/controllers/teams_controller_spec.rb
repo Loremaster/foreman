@@ -27,7 +27,7 @@ describe TeamsController do
       country = Country.create( :name => "USA" )
 
       expect do
-        post :create, :team => { :name => "Metal", :country_id => country.id, :people_count => 45, :price => 450 }
+        post :create, :team => { :name => "Metal", :country_id => country.id, :people_count => 45, :price => 450, :tag_list => "painting" }
       end.to change( Team, :count ).by(1)
     end
   end
@@ -44,7 +44,7 @@ describe TeamsController do
   describe "PUT 'update'" do
     before(:each) do
       @team = FactoryGirl.create(:team)
-      @attrs = { :name => "name2", :country_id => @team.country_id, :people_count => @team.people_count, :price => @team.price }
+      @attrs = { :name => "name2", :country_id => @team.country_id, :people_count => @team.people_count, :price => @team.price, :tag_list => @team.tag_list }
     end
 
     it "should update" do

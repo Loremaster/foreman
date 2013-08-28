@@ -10,5 +10,6 @@ FactoryGirl.define do
     country
     people_count 8
     price 1000
+    tag_list 'painting'
   end
 end
