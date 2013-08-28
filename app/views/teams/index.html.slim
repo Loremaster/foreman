@@ -3,10 +3,10 @@
 
   - if !@teams.empty?
     - Team.tags_with_nums.each do |tag_with_num|
-      span class="label"
-        = link_to tag_with_num[0], teams_path(:tag => tag_with_num[0]), :class => "sidebar-tag"
+      span class="label sidebar-tag"
+        = link_to tag_with_num[0], teams_path(:tag => tag_with_num[0]), :class => "sidebar-tag-text"
       = " x #{tag_with_num[1]}"
-      br
+      br/
 
   - else
     div class="well" В настоящее время тегов нет.

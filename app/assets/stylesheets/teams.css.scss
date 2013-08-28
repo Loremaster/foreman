@@ -32,10 +32,16 @@ $padding: 15px;
   background-image: url(down_arrow.gif);
 }
 
-a.sidebar-tag{
-  color: white;
+span.sidebar-tag{
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  a.sidebar-tag-text{
+    color: white;
+  }
+
+  a.sidebar-tag-text:hover{
+    color: white;
+  }
 }
 
-a.sidebar-tag:hover{
-  color: white;
-}
