@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "1.9.3"
 
 gem 'rails', '3.2.14'
-gem 'sqlite3'
+gem 'pg', '0.16.0'
 gem 'jquery-rails'
 gem 'therubyracer', :platform => :ruby
 gem 'less-rails', '2.3.3'
