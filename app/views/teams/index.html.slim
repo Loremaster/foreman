@@ -21,6 +21,8 @@ legend class="legend-base"
     i class="icon-plus"
     = " Добавить бригаду"
 
+  = link_to_all_teams( :country_id, :tag, :table_tags )
+
 - if !@teams.empty?
   table class="table table-striped pretty"
     thead
