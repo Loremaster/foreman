@@ -28,7 +28,7 @@ class Team < ActiveRecord::Base
             :presence => { :message => "Страна должна быть выбрана" }
 
   validates :tag_list,
-            :length => { :minimum => 1, :message => "Укажите хотя бы 1 тег" }
+            :presence => { :message => "Укажите хотя бы 1 тег" }
 
   # Array with tag name and count of his tag in model, sorted asc.
   # => [["painting", 4], ["drawning", 1]]
