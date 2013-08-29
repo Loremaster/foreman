@@ -3,7 +3,7 @@
   div class="sidebar"
     legend class="legend-base" Теги
 
-    - if !@teams.empty?
+    - if ActsAsTaggableOn::Tag.count > 0
       / Tagcloud.
       - Team.tags_with_nums.each do |tag_with_num|
         span class="label sidebar-tag"
