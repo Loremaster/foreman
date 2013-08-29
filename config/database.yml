@@ -17,7 +17,6 @@ test:
 production:
   adapter: postgresql
   database: foreman_production
-  username: postgres
-  password:
-  host: localhost
   encoding: UTF8
+  pool: 5
+  timeout: 5000
